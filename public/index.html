@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Follower Counter - Boost Your Social Media</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">📱 Live Follower Counter</div>
+                <div class="nav-links">
+                    <a href="#home" onclick="showSection('home')">Home</a>
+                    <a href="#dashboard" onclick="showSection('dashboard')">Dashboard</a>
+                    <a href="#plans" onclick="showSection('plans')">Plans</a>
+                    <a href="#chat" onclick="showSection('chat')">Chat</a>
+                    <a href="#admin" onclick="showSection('admin')">Admin</a>
+                    <a href="#settings" onclick="showSection('settings')">Settings</a>
+                    <button id="logoutBtn" onclick="logout()" style="display:none;">Logout</button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Home Section -->
+        <section id="home" class="section active">
+            <div class="container">
+                <div class="hero">
+                    <h1>🚀 Boost Your Social Media Presence</h1>
+                    <p>Increase Instagram followers, views, likes and grow on all platforms</p>
+                    <p style="font-size: 12px; color: #666; margin-top: 10px;">Made by <strong>notlostplayz</strong></p>
+                    
+                    <div class="auth-forms">
+                        <div class="form-group">
+                            <h3>Login / Register</h3>
+                            <input type="email" id="authEmail" placeholder="Email" required>
+                            <input type="password" id="authPassword" placeholder="Password" required>
+                            <button onclick="login()">Login</button>
+                            <button onclick="register()" style="margin-top: 10px;">Register</button>
+                        </div>
+                    </div>
+                    
+                    <div class="features-grid">
+                        <div class="feature">
+                            <span>📸</span>
+                            <h3>Instagram</h3>
+                            <p>Followers, Views & Likes</p>
+                        </div>
+                        <div class="feature">
+                            <span>🎵</span>
+                            <h3>TikTok</h3>
+                            <p>Viral Growth Strategy</p>
+                        </div>
+                        <div class="feature">
+                            <span>🐦</span>
+                            <h3>Twitter</h3>
+                            <p>Followers & Engagement</p>
+                        </div>
+                        <div class="feature">
+                            <span>📺</span>
+                            <h3>YouTube</h3>
+                            <p>Subscribers & Views</p>
+                        </div>
+                        <div class="feature">
+                            <span>👥</span>
+                            <h3>Facebook</h3>
+                            <p>Page Growth & Reach</p>
+                        </div>
+                        <div class="feature">
+                            <span>⚡</span>
+                            <h3>Fast Delivery</h3>
+                            <p>5-30 Minutes</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dashboard Section -->
+        <section id="dashboard" class="section">
+            <div class="container">
+                <h2>Your Dashboard</h2>
+                <div id="dashboardContent" style="display:none;">
+                    <div class="dashboard-grid">
+                        <div class="card">
+                            <h3>📊 Active Boosts</h3>
+                            <p id="activeBoosts">0</p>
+                        </div>
+                        <div class="card">
+                            <h3>✅ Completed</h3>
+                            <p id="completedBoosts">0</p>
+                        </div>
+                        <div class="card">
+                            <h3>⏳ Pending</h3>
+                            <p id="pendingBoosts">0</p>
+                        </div>
+                        <div class="card">
+                            <h3>💳 Plan</h3>
+                            <p id="userPlan">Free</p>
+                        </div>
+                    </div>
+                    
+                    <div class="boost-form">
+                        <h3>Start a New Boost</h3>
+                        <div class="form-group">
+                            <label>Select Service</label>
+                            <select id="boostService">
+                                <option value="instagram-followers">Instagram Followers</option>
+                                <option value="instagram-views">Instagram Views</option>
+                                <option value="instagram-likes">Instagram Likes</option>
+                                <option value="tiktok-followers">TikTok Followers</option>
+                                <option value="tiktok-views">TikTok Views</option>
+                                <option value="youtube-subscribers">YouTube Subscribers</option>
+                                <option value="twitter-followers">Twitter Followers</option>
+                                <option value="facebook-followers">Facebook Followers</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Count</label>
+                            <input type="number" id="boostCount" placeholder="Enter amount" min="100" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Account Link</label>
+                            <input type="url" id="boostLink" placeholder="Paste your profile link" required>
+                        </div>
+                        
+                        <button onclick="initiateBoost()">🚀 Start Boost</button>
+                    </div>
+                    
+                    <div class="boosts-history">
+                        <h3>Recent Boosts</h3>
+                        <div id="boostsTable"></div>
+                    </div>
+                </div>
+                <div id="notAuthMessage" style="text-align: center; padding: 40px;">
+                    <p>Please login to access your dashboard</p>
+                    <button onclick="showSection('home')">Go to Login</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Plans Section -->
+        <section id="plans" class="section">
+            <div class="container">
+                <h2>Our Plans</h2>
+                <p style="text-align: center; margin-bottom: 30px; color: #666;">⭐ Admins get ALL features FREE!</p>
+                <div id="plansContainer" class="plans-grid"></div>
+            </div>
+        </section>
+
+        <!-- Chat Section -->
+        <section id="chat" class="section">
+            <div class="container">
+                <h2>💬 Chat with Admin</h2>
+                <p style="text-align: center; margin-bottom: 10px; color: #666;">Admin Email: <strong>ittzrudra@gmail.com</strong></p>
+                
+                <div class="chat-container">
+                    <div id="chatMessages" class="chat-messages"></div>
+                    
+                    <div class="chat-input-area">
+                        <input type="text" id="userName" placeholder="Your Name" style="display:none;">
+                        <input type="email" id="userEmail" placeholder="Your Email" style="display:none;">
+                        <textarea id="chatMessage" placeholder="Type your message here..." rows="3"></textarea>
+                        <button onclick="sendChat()">Send Message</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Admin Section -->
+        <section id="admin" class="section">
+            <div class="container">
+                <h2>🔐 Admin Portal</h2>
+                
+                <div id="adminLoginForm" style="max-width: 400px; margin: 40px auto;">
+                    <h3>Admin Login</h3>
+                    <div class="form-group">
+                        <input type="password" id="adminPassword" placeholder="Enter admin password" required>
+                        <button onclick="adminLogin()">Login as Admin</button>
+                    </div>
+                    <p style="font-size: 12px; color: #999; text-align: center; margin-top: 20px;">Password: notlostplayz335</p>
+                </div>
+                
+                <div id="adminPanel" style="display:none;">
+                    <div class="admin-stats">
+                        <div class="stat-card">
+                            <h3>👥 Total Users</h3>
+                            <p id="adminTotalUsers">0</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>💬 Messages</h3>
+                            <p id="adminTotalMessages">0</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>📧 Admin Email</h3>
+                            <p id="adminEmail">ittzrudra@gmail.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="admin-section">
+                        <h3>🔗 Managed Instagram Accounts</h3>
+                        <div id="adminInstagramAccounts"></div>
+                    </div>
+                    
+                    <div class="admin-section">
+                        <h3>📋 All User Messages</h3>
+                        <div id="adminMessages"></div>
+                    </div>
+                    
+                    <button onclick="adminLogout()" style="margin-top: 20px; background: #dc3545;">Logout Admin</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Settings Section -->
+        <section id="settings" class="section">
+            <div class="container">
+                <h2>⚙️ Settings</h2>
+                <div class="settings-tabs">
+                    <button onclick="openSettingsTab('contact')">Contact Us</button>
+                    <button onclick="openSettingsTab('terms')">Terms & Conditions</button>
+                    <button onclick="openSettingsTab('privacy')">Privacy Policy</button>
+                    <button onclick="openSettingsTab('about')">About Us</button>
+                </div>
+                
+                <div id="contact" class="settings-content">
+                    <h3>📧 Contact Us</h3>
+                    <p><strong>Admin Email:</strong> ittzrudra@gmail.com</p>
+                    <p><strong>Support:</strong> Available 24/7 via chat</p>
+                    <p><strong>Creator:</strong> notlostplayz</p>
+                    <p><strong>Managed Instagram Accounts:</strong></p>
+                    <ul>
+                        <li><a href="https://www.instagram.com/itzzz_ur_rudra?igsh=MWozZzM5NXh2MWJncA==" target="_blank">@itzzz_ur_rudra</a></li>
+                        <li><a href="https://www.instagram.com/itzz_urrudra?igsh=ZXo4YjV6Mm1ybjFt" target="_blank">@itzz_urrudra</a></li>
+                    </ul>
+                </div>
+                
+                <div id="terms" class="settings-content" style="display:none;">
+                    <h3>📜 Terms & Conditions</h3>
+                    <p><strong>Last Updated:</strong> July 2026</p>
+                    <p><strong>Creator:</strong> notlostplayz</p>
+                    <p><strong>1. Acceptance of Terms</strong></p>
+                    <p>By using Live Follower Counter, you agree to comply with these terms and conditions. If you do not agree, please do not use our service.</p>
+                    
+                    <p><strong>2. Service Disclaimer</strong></p>
+                    <p>Our service is provided "as is" without any warranties. We do not guarantee results or specific metrics. Social media platforms may have different outcomes.</p>
+                    
+                    <p><strong>3. User Responsibility</strong></p>
+                    <p>Users are responsible for their account security and all activities conducted through their account. Users must comply with all social media platform terms.</p>
+                    
+                    <p><strong>4. Limitation of Liability</strong></p>
+                    <p>Live Follower Counter shall not be liable for any indirect, incidental, special, consequential or punitive damages.</p>
+                    
+                    <p><strong>5. Changes to Terms</strong></p>
+                    <p>We reserve the right to modify these terms at any time. Continued use constitutes acceptance of modified terms.</p>
+                </div>
+                
+                <div id="privacy" class="settings-content" style="display:none;">
+                    <h3>🔒 Privacy Policy</h3>
+                    <p><strong>Last Updated:</strong> July 2026</p>
+                    <p><strong>Creator:</strong> notlostplayz</p>
+                    
+                    <p><strong>1. Information We Collect</strong></p>
+                    <p>We collect email addresses, usernames, passwords (securely), and account links provided by users.</p>
+                    
+                    <p><strong>2. How We Use Information</strong></p>
+                    <p>Information is used to provide services, improve our platform, and communicate with users.</p>
+                    
+                    <p><strong>3. Data Security</strong></p>
+                    <p>We implement industry-standard security measures to protect user data. However, no system is completely secure.</p>
+                    
+                    <p><strong>4. Third-Party Services</strong></p>
+                    <p>We may integrate with social media platforms and third-party services. Please review their privacy policies.</p>
+                    
+                    <p><strong>5. User Rights</strong></p>
+                    <p>Users can request data access, modification, or deletion by contacting ittzrudra@gmail.com</p>
+                    
+                    <p><strong>6. Children's Privacy</strong></p>
+                    <p>Our service is not directed to children under 13. We do not knowingly collect data from children.</p>
+                </div>
+                
+                <div id="about" class="settings-content" style="display:none;">
+                    <h3>ℹ️ About Live Follower Counter</h3>
+                    <p><strong>Version:</strong> 1.0.0</p>
+                    <p><strong>Created by:</strong> notlostplayz</p>
+                    <p><strong>Launch Date:</strong> July 2026</p>
+                    
+                    <p><strong>Mission:</strong> Empower content creators and businesses to grow their social media presence across all major platforms.</p>
+                    
+                    <p><strong>Features:</strong></p>
+                    <ul>
+                        <li>Instagram follower, view, and like growth</li>
+                        <li>Multi-platform support (TikTok, Twitter, YouTube, Facebook)</li>
+                        <li>Fast delivery (5-30 minutes)</li>
+                        <li>Flexible pricing plans</li>
+                        <li>24/7 admin support via chat</li>
+                        <li>Admin access to all features FREE</li>
+                    </ul>
+                    
+                    <p><strong>Managed Accounts:</strong></p>
+                    <ul>
+                        <li>@itzzz_ur_rudra</li>
+                        <li>@itzz_urrudra</li>
+                    </ul>
+                    
+                    <p style="margin-top: 30px; font-style: italic; color: #666;">"Grow your passion, build your empire" - notlostplayz</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
