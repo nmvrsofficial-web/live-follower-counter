@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard - Real-time Weather</title>
+    <link rel="stylesheet" href="weather-styles.css">
+</head>
+<body>
+    <div class="container-full">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">🌤️ Weather Dashboard</div>
+                <div class="nav-links">
+                    <a href="index.html">← Back to Home</a>
+                    <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">🌙</button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Search Bar -->
+        <div class="search-section">
+            <div class="container">
+                <div class="search-box">
+                    <input type="text" id="citySearch" placeholder="Search for a city..." onkeyup="handleSearch()">
+                    <button onclick="searchCity()">🔍 Search</button>
+                </div>
+                <div id="suggestions" class="suggestions"></div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="container">
+            <!-- Current Weather -->
+            <div class="current-weather-section">
+                <div class="current-weather" id="currentWeather">
+                    <div class="loading">Loading weather data...</div>
+                </div>
+            </div>
+
+            <!-- Quick Stats -->
+            <div class="quick-stats" id="quickStats"></div>
+
+            <!-- Hourly Forecast -->
+            <div class="forecast-section">
+                <h2>⏰ Hourly Forecast</h2>
+                <div class="hourly-forecast" id="hourlyForecast"></div>
+            </div>
+
+            <!-- 7-Day Forecast -->
+            <div class="forecast-section">
+                <h2>📅 7-Day Forecast</h2>
+                <div class="daily-forecast" id="dailyForecast"></div>
+            </div>
+
+            <!-- Detailed Metrics -->
+            <div class="detailed-metrics" id="detailedMetrics"></div>
+
+            <!-- Weather Alerts -->
+            <div id="weatherAlerts" class="alerts-section"></div>
+
+            <!-- Saved Locations -->
+            <div class="saved-locations-section">
+                <h2>📍 Saved Locations</h2>
+                <div class="saved-locations" id="savedLocations"></div>
+                <button class="btn-add" onclick="saveCityToList()">⭐ Save Current City</button>
+            </div>
+
+            <!-- About & Settings -->
+            <div class="settings-section">
+                <h2>⚙️ Settings</h2>
+                <div class="settings-grid">
+                    <label>
+                        <input type="radio" name="tempUnit" value="C" checked onchange="changeTempUnit()">
+                        Temperature: °C (Celsius)
+                    </label>
+                    <label>
+                        <input type="radio" name="tempUnit" value="F" onchange="changeTempUnit()">
+                        Temperature: °F (Fahrenheit)
+                    </label>
+                    <label>
+                        <input type="radio" name="speedUnit" value="m/s" checked onchange="changeSpeedUnit()">
+                        Wind Speed: m/s
+                    </label>
+                    <label>
+                        <input type="radio" name="speedUnit" value="km/h" onchange="changeSpeedUnit()">
+                        Wind Speed: km/h
+                    </label>
+                    <label>
+                        <input type="radio" name="speedUnit" value="mph" onchange="changeSpeedUnit()">
+                        Wind Speed: mph
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>🌍 Weather data powered by OpenWeatherMap API | Made by notlostplayz | Last updated: <span id="lastUpdate">--:--</span></p>
+    </footer>
+
+    <script src="weather-script.js"></script>
+</body>
+</html>
